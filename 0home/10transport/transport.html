@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://dabach.co.ma/easyschool/admin/transport -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="icon" href="https://dabach.co.ma/easyschool/images/favicon.png">
+    <title> transport </title>
+    <link media="all" type="text/css" rel="stylesheet" href="./transport_files/bootstrap.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="./transport_files/bootstrap-theme.min.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="./transport_files/font-awesome.css">
+
+    <script src="./transport_files/jquery-1.11.3.min.js"></script>
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="./transport_files/style.css">
+
+
+       
+  </head>
+
+<body>
+
+
+  <div class="navbar navbar-default panel-nav">
+      
+        <div class="container-fluid">
+          
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>      
+                <span class="icon-bar"></span>  
+                <span class="icon-bar"></span>  
+                <span class="icon-bar"></span>          
+              </button> 
+              <a href="https://dabach.co.ma/easyschool"><img src="./transport_files/logo.png" class="img-responsive img-logo" width="210px" alt=""></a>
+             </div>
+
+            <div class="collapse navbar-collapse">   
+
+               <ul class="navbar-right">                 
+              
+                <li class="dropdown">
+                  <a href="https://dabach.co.ma/easyschool/admin/transport#" class="btn btn-default btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">language <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://dabach.co.ma/easyschool/lang?set=ar">عربي</a></li>
+                    <li><a href="https://dabach.co.ma/easyschool/lang?set=fr">francais</a></li>
+                    <li><a href="https://dabach.co.ma/easyschool/lang?set=en">english</a></li>
+                  </ul>
+                </li>
+                <li><a class="btn btn-danger btn-sm" href="https://dabach.co.ma/easyschool/logout" style="font-size:12px;">logout <i class="glyphicon glyphicon-log-out"></i></a></li>
+              </ul>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+<div class="clear"></div>
+
+<div class="container-fluid">
+
+
+<div class="panel panel-default panel-main">
+  <div class="panel-body">
+    
+  <ol class="breadcrumb">
+    <li><a href="https://dabach.co.ma/easyschool/admin">Home</a></li>
+    <li class="active">transport</li>
+  </ol>
+  
+<a data-toggle="modal" data-target="#new_class" href="https://dabach.co.ma/easyschool/admin/transport#" class="btn btn-warning btn-lg"><i class="fa fa-bus"></i> new transport</a>
+
+
+<div class="modal fade" id="new_class">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">new transport</h4>
+      </div>
+      <div class="modal-body">
+        
+
+<form method="POST" action="https://dabach.co.ma/easyschool/admin/transport/new" accept-charset="UTF-8" class="col-md-12" id="myForm" data-toggle="validator" novalidate="true"><input name="_token" type="hidden" value="9g4ipjNErSON1N3c7z0WBpHJxpBzKc3MUc6CNhQ0">
+
+      <div class="col-md-12">
+          <div id="resultajax" class="center"></div>
+      </div>
+
+      <div class="col-md-12">  
+
+              <div class="form-group">
+                <label class="control-label">class  : </label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-blackboard"></i></span>
+                  <select name="class_id" class="form-control input-lg">
+                    <option value="">select</option>
+                                          <option value="64">الثانية ا</option>
+                                          <option value="65">الاولى ب</option>
+                                          <option value="66">الاولى ا</option>
+                                          <option value="79">الصف الاول تحضيري</option>
+                                          <option value="82">test</option>
+                                          <option value="83">SIXIEME A</option>
+                                          <option value="87">Access Program </option>
+                                          <option value="88">Summer class</option>
+                                          <option value="89">mujtaba</option>
+                                          <option value="90">pl2 QHSE</option>
+                                          <option value="91">teminal</option>
+                                      </select>
+                </div>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                              </div>
+
+
+              <div class="form-group">
+                <label class="control-label">day  : </label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  <select name="days" class="form-control input-lg">
+                    <option value="">select</option>
+                    
+                    
+                                          <option value="1">Monday</option>
+                                          <option value="2">Tuesday</option>
+                                          <option value="3">Wednesday</option>
+                                          <option value="4">Thursday</option>
+                                          <option value="5">Friday</option>
+                                          <option value="6">Saturday</option>
+                                          <option value="7">Sunday</option>
+                                      </select>
+                </div>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                              </div>
+
+      
+              <div class="form-group">
+                <label class="control-label">Starting time : </label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                <input placeholder="00:00" class="form-control input-lg" required="required" name="time_start" type="text" value=""> 
+                </div>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                              </div>
+
+              <div class="form-group">
+                <label class="control-label">Return time : </label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                <input placeholder="00:00" class="form-control input-lg" required="required" name="time_return" type="text" value=""> 
+                </div>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                              </div>
+
+      </div>
+ 
+
+            <div class="clear"></div><br>
+            <div class="col-md-12">
+              <input class="btn btn-info btn-block input-lg disabled" type="submit" value="add"> 
+            </div>
+
+
+              </form>
+
+     
+        <div class="clear"></div><br>
+
+<script type="text/javascript">
+      
+
+        $('#myForm').submit(function(event) {
+
+          event.preventDefault();
+
+          $('#resultajax').append('<img src="https://dabach.co.ma/easyschool/images/loader.gif" alt="please wait ..." />');
+
+          $('#myForm input.btn').hide();
+
+          
+           $.ajax({
+            type: 'POST',
+            url: 'https://dabach.co.ma/easyschool/admin/transport/new',
+            data: $(this).serialize(),
+
+            success: function(data) {
+                              
+                if(data == 'true') {   
+                  $('#resultajax').html("<br><div class='alert alert-success center'><strong>added successfully</strong></div>");
+                  $('#myForm input.btn').show();
+                 }
+
+                if(data == 'false') {
+                  $('#resultajax').html("<br><div class='alert alert-danger center'><strong>Error! please try again</strong></div>");
+                  $('#myForm input.btn').show();
+                }
+
+                                     
+              }
+
+            });
+                          
+          });
+
+          function refresh() {
+            // to current URL
+            window.location='https://dabach.co.ma/easyschool/admin/transport';
+          }
+
+</script>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="refresh();" class="btn btn-default" data-dismiss="modal">close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="clear"></div><hr>
+
+
+
+
+<div class="clear"></div>
+
+
+    <div class="table-responsive">
+      <table class="table table table-striped table-bordered">
+        <thead>
+          <tr class="tr">
+            <th>class</th>
+            <th>transport</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr class="tr-body">
+
+            <td>الثانية ا</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=64"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>الاولى ب</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=65"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>الاولى ا</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=66"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>الصف الاول تحضيري</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=79"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>test</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=82"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>SIXIEME A</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=83"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>Access Program </td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=87"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>Summer class</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=88"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>mujtaba</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=89"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>pl2 QHSE</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=90"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+
+          <tr class="tr-body">
+
+            <td>teminal</td>
+            <td><a href="https://dabach.co.ma/easyschool/admin/transport?class=91"><i class="fa fa-bus large"></i></a></td>
+
+          </tr>
+
+ 
+
+        </tbody>
+      </table>
+    </div><!-- /.table-responsive -->
+
+
+
+
+
+
+
+  </div>
+</div>
+
+
+
+</div>
+
+
+     
+     <script src="./transport_files/bootstrap.min.js"></script>
+
+     <script src="./transport_files/validator.js"></script>
+
+
+
+</body></html>

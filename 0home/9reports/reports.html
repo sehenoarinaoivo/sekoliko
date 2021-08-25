@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://dabach.co.ma/easyschool/admin/reports -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="icon" href="https://dabach.co.ma/easyschool/images/favicon.png">
+    <title> reports </title>
+    <link media="all" type="text/css" rel="stylesheet" href="./reports_files/bootstrap.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="./reports_files/bootstrap-theme.min.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="./reports_files/font-awesome.css">
+
+    <script src="./reports_files/jquery-1.11.3.min.js"></script>
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="./reports_files/style.css">
+
+
+       
+  </head>
+
+<body>
+
+
+  <div class="navbar navbar-default panel-nav">
+      
+        <div class="container-fluid">
+          
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>      
+                <span class="icon-bar"></span>  
+                <span class="icon-bar"></span>  
+                <span class="icon-bar"></span>          
+              </button> 
+              <a href="https://dabach.co.ma/easyschool"><img src="./reports_files/logo.png" class="img-responsive img-logo" width="210px" alt=""></a>
+             </div>
+
+            <div class="collapse navbar-collapse">   
+
+               <ul class="navbar-right">                 
+              
+                <li class="dropdown">
+                  <a href="https://dabach.co.ma/easyschool/admin/reports#" class="btn btn-default btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">language <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://dabach.co.ma/easyschool/lang?set=ar">عربي</a></li>
+                    <li><a href="https://dabach.co.ma/easyschool/lang?set=fr">francais</a></li>
+                    <li><a href="https://dabach.co.ma/easyschool/lang?set=en">english</a></li>
+                  </ul>
+                </li>
+                <li><a class="btn btn-danger btn-sm" href="https://dabach.co.ma/easyschool/logout" style="font-size:12px;">logout <i class="glyphicon glyphicon-log-out"></i></a></li>
+              </ul>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+<div class="clear"></div>
+
+<div class="container-fluid">
+
+<link media="all" type="text/css" rel="stylesheet" href="./reports_files/datatables.min.css">
+
+<script src="./reports_files/datatables.min.js"></script>
+
+
+  <script src="./reports_files/en.js"></script>
+
+
+<div class="panel panel-default panel-main">
+  <div class="panel-body">
+    
+  <ol class="breadcrumb">
+    <li><a href="https://dabach.co.ma/easyschool/admin">Home</a></li>
+    <li class="active">reports</li>
+  </ol>
+
+
+  
+
+
+<div class="clear"></div><hr>
+
+
+<a data-toggle="modal" data-target="#new_absence" href="https://dabach.co.ma/easyschool/admin/reports#" class="btn btn-warning btn-lg margin-bottom-30"><i class="fa fa-plus"></i> report</a>
+
+
+
+<div class="modal fade" id="new_absence">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button onclick="refresh();" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">report</h4>
+      </div>
+      <div class="modal-body">
+        
+
+<form method="POST" action="https://dabach.co.ma/easyschool/admin/reports/store" accept-charset="UTF-8" class="col-md-12" id="myForm" data-toggle="validator" novalidate="true"><input name="_token" type="hidden" value="9g4ipjNErSON1N3c7z0WBpHJxpBzKc3MUc6CNhQ0">
+
+      <div class="col-md-12">
+          <div id="resultajax" class="center"></div>
+      </div>
+
+      <div class="col-md-12">
+
+
+              <div class="form-group">
+                  <label class="control-label">class  : </label>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-blackboard"></i></span>
+                    <select name="class_id" id="class" class="form-control  input-lg" required="">
+                    <option value="">select class</option>
+                                                  <option value="64">الثانية ا</option>
+                                                  <option value="65">الاولى ب</option>
+                                                  <option value="66">الاولى ا</option>
+                                                  <option value="79">الصف الاول تحضيري</option>
+                                                  <option value="82">test</option>
+                                                  <option value="83">SIXIEME A</option>
+                                                  <option value="87">Access Program </option>
+                                                  <option value="88">Summer class</option>
+                                                  <option value="89">mujtaba</option>
+                                                  <option value="90">pl2 QHSE</option>
+                                                  <option value="91">teminal</option>
+                        
+                    </select>
+                  </div>
+              </div>
+
+              <div class="form-group student">
+                  <label class="control-label">student : </label>
+                  <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-mortar-board"></i></span>
+                  <select name="student_id" id="student" class="form-control input-lg" required="">
+                      <option value="">all students</option>
+                  </select>
+                  </div>
+                  <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                  <div class="help-block with-errors"></div>
+              </div>
+
+
+<script type="text/javascript">
+$(document).ready(function () { 
+
+            $('#class').on('change',function(e){
+            var class_id = e.target.value;
+
+            $(".student").css ({"display":"block"});
+
+            $.ajax({
+            type: "GET",
+            url: "https://dabach.co.ma/easyschool/ajax-class?class_id="+class_id,
+                success: function(data) {  
+
+                    var subcat =  $('#student').empty();
+
+                    subcat.append('<option value ="">all students</option>');
+
+                    $.each(data,function(create,subcatObj){
+                    var option = $('<option/>', {id:create, value:subcatObj});
+                    subcat.append('<option value ="'+subcatObj+'">'+create+'</option>');
+                    });
+
+                }
+            });
+
+
+        });
+});
+</script>
+
+
+              <div class="form-group">
+                <label class="control-label">report : </label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                <textarea rows="5" class="form-control" name="report" cols="50"></textarea> 
+                </div>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                              </div>
+
+      </div>
+
+ 
+
+            <div class="clear"></div><br>
+            <div class="col-md-12">
+              <input class="btn btn-info btn-block input-lg disabled" type="submit" value="add"> 
+            </div>
+
+
+              </form>
+
+     
+        <div class="clear"></div><br>
+
+<script type="text/javascript">
+      
+
+        $('#myForm').submit(function(event) {
+
+          event.preventDefault();
+
+          $('#resultajax').append('<img src="https://dabach.co.ma/easyschool/images/loader.gif" alt="please wait ..." />');
+
+          $('#myForm input.btn').hide();
+
+          
+           $.ajax({
+            type: 'POST',
+            url: 'https://dabach.co.ma/easyschool/admin/reports/store',
+            data: $(this).serialize(),
+
+            success: function(data) {
+                              
+                if(data == 'true') {   
+                  $('#resultajax').html("<br><div class='alert alert-success center'><strong>added successfully</strong></div>");
+                  $('#myForm input.btn').show();
+                 }
+
+                if(data == 'false') {
+                  $('#resultajax').html("<br><div class='alert alert-danger center'><strong>Error! please try again </strong></div>");
+                  $('#myForm input.btn').show();
+                }
+                                     
+              }
+
+            });
+                          
+          });
+
+          function refresh() {
+            // to current URL
+            window.location='https://dabach.co.ma/easyschool/admin/reports';
+          }
+
+</script>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="refresh();" class="btn btn-default" data-dismiss="modal">close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+    <div class="table-responsive">
+      <div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example_length"><label>Show <select name="example_length" aria-controls="example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example" class="table table table-striped table-bordered display dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+        <thead>
+          <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="by: activate to sort column descending" style="width: 103px;">by</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="student: activate to sort column ascending" style="width: 106px;">student</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="report: activate to sort column ascending" style="width: 811px;">report</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="date: activate to sort column ascending" style="width: 112px;">date</th></tr>
+        </thead>
+        <tbody>
+
+
+
+
+                  
+
+                  
+
+                  
+
+                  
+ 
+
+        <tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1"><a href="https://dabach.co.ma/easyschool/admin/teacher/2/profile"><span class="badge green-bg size-1">Teacher DEMO</span></a></td>
+
+            <td><a href="https://dabach.co.ma/easyschool/admin/student/4/profile"><span class="badge red-bg size-1">Student DEMO</span></a></td>
+
+            <td>Vous n'avez pas fini votre devoir a la maison dans deux seances differents sulement dans trois jour sucessives</td>
+            <td>2021-08-09 08:25</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1"><a href="https://dabach.co.ma/easyschool/admin/teacher/2/profile"><span class="badge green-bg size-1">Teacher DEMO</span></a></td>
+
+            <td><a href="https://dabach.co.ma/easyschool/admin/student/4/profile"><span class="badge red-bg size-1">Student DEMO</span></a></td>
+
+            <td>ali imran</td>
+            <td>2019-11-25 10:20</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1"><a href="https://dabach.co.ma/easyschool/admin/teacher/2/profile"><span class="badge green-bg size-1">Teacher DEMO</span></a></td>
+
+            <td><a href="https://dabach.co.ma/easyschool/admin/student/4/profile"><span class="badge red-bg size-1">Student DEMO</span></a></td>
+
+            <td>ooppoop</td>
+            <td>2018-07-21 18:20</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1"><a href="https://dabach.co.ma/easyschool/admin/teacher/2/profile"><span class="badge green-bg size-1">Teacher DEMO</span></a></td>
+
+            <td><a href="https://dabach.co.ma/easyschool/admin/student/4/profile"><span class="badge red-bg size-1">Student DEMO</span></a></td>
+
+            <td>test test</td>
+            <td>2018-05-19 23:13</td>
+
+          </tr></tbody>
+      </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example_previous"><a href="https://dabach.co.ma/easyschool/admin/reports#" aria-controls="example" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="https://dabach.co.ma/easyschool/admin/reports#" aria-controls="example" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="example_next"><a href="https://dabach.co.ma/easyschool/admin/reports#" aria-controls="example" data-dt-idx="2" tabindex="0">Next</a></li></ul></div></div></div></div>
+    </div><!-- /.table-responsive -->
+
+
+
+
+  </div>
+</div>
+
+
+
+</div>
+
+
+     
+     <script src="./reports_files/bootstrap.min.js"></script>
+
+     <script src="./reports_files/validator.js"></script>
+
+
+
+</body></html>

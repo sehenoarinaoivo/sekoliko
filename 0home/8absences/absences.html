@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)./admin/absences -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="icon" href="./images/favicon.png">
+    <title> absences </title>
+    <link media="all" type="text/css" rel="stylesheet" href="./absences_files/bootstrap.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="./absences_files/bootstrap-theme.min.css">
+
+    <link media="all" type="text/css" rel="stylesheet" href="./absences_files/font-awesome.css">
+
+    <script src="./absences_files/jquery-1.11.3.min.js"></script>
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="./absences_files/style.css">
+
+
+       
+  </head>
+
+<body>
+
+
+  <div class="navbar navbar-default panel-nav">
+      
+        <div class="container-fluid">
+          
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>      
+                <span class="icon-bar"></span>  
+                <span class="icon-bar"></span>  
+                <span class="icon-bar"></span>          
+              </button> 
+              <a href="."><img src="./absences_files/logo.png" class="img-responsive img-logo" width="210px" alt=""></a>
+             </div>
+
+            <div class="collapse navbar-collapse">   
+
+               <ul class="navbar-right">                 
+              
+                <li class="dropdown">
+                  <a href="./admin/absences#" class="btn btn-default btn-sm" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">language <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="./lang?set=ar">عربي</a></li>
+                    <li><a href="./lang?set=fr">francais</a></li>
+                    <li><a href="./lang?set=en">english</a></li>
+                  </ul>
+                </li>
+                <li><a class="btn btn-danger btn-sm" href="./logout" style="font-size:12px;">logout <i class="glyphicon glyphicon-log-out"></i></a></li>
+              </ul>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+<div class="clear"></div>
+
+<div class="container-fluid">
+
+<link media="all" type="text/css" rel="stylesheet" href="./absences_files/bootstrap-datepicker.css">
+
+<script src="./absences_files/bootstrap-datepicker.js"></script>
+
+
+<link media="all" type="text/css" rel="stylesheet" href="./absences_files/datatables.min.css">
+
+<script src="./absences_files/datatables.min.js"></script>
+
+
+  <script src="./absences_files/en.js"></script>
+
+
+
+<div class="panel panel-default panel-main">
+  <div class="panel-body">
+    
+  <ol class="breadcrumb">
+    <li><a href="./admin">Home</a></li>
+    <li class="active">absences</li>
+  </ol>
+
+
+
+
+<a data-toggle="modal" data-target="#new_absence" href="./admin/absences#" class="btn btn-warning btn-lg"><i class="fa fa-clipboard"></i> add student absence</a>
+
+
+
+<div class="modal fade" id="new_absence">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button onclick="refresh();" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">add student absence</h4>
+      </div>
+      <div class="modal-body">
+        
+
+<form method="POST" action="./admin/absences/store" accept-charset="UTF-8" class="col-md-12" id="myForm" data-toggle="validator" novalidate="true"><input name="_token" type="hidden" value="9g4ipjNErSON1N3c7z0WBpHJxpBzKc3MUc6CNhQ0">
+
+      <div class="col-md-12">
+          <div id="resultajax" class="center"></div>
+      </div>
+
+      <div class="col-md-12">
+
+
+
+              <div class="form-group">
+                  <label class="control-label">class  : </label>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-blackboard"></i></span>
+                    <select name="class_id" id="class" class="form-control  input-lg" required="">
+                    <option value="">select class</option>
+                                                  <option value="64">الثانية ا</option>
+                                                  <option value="65">الاولى ب</option>
+                                                  <option value="66">الاولى ا</option>
+                                                  <option value="79">الصف الاول تحضيري</option>
+                                                  <option value="82">test</option>
+                                                  <option value="83">SIXIEME A</option>
+                                                  <option value="87">Access Program </option>
+                                                  <option value="88">Summer class</option>
+                                                  <option value="89">mujtaba</option>
+                                                  <option value="90">pl2 QHSE</option>
+                                                  <option value="91">teminal</option>
+                        
+                    </select>
+                  </div>
+              </div>
+
+              <div class="form-group student">
+                  <label class="control-label">student : </label>
+                  <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-mortar-board"></i></span>
+                  <select name="student_id" id="student" class="form-control input-lg" required="">
+                      <option value="">all students</option>
+                  </select>
+                  </div>
+                  <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                  <div class="help-block with-errors"></div>
+              </div>
+
+
+<script type="text/javascript">
+$(document).ready(function () { 
+
+            $('#class').on('change',function(e){
+            var class_id = e.target.value;
+
+            $(".student").css ({"display":"block"});
+
+            $.ajax({
+            type: "GET",
+            url: "./ajax-class?class_id="+class_id,
+                success: function(data) {  
+
+                    var subcat =  $('#student').empty();
+
+                    subcat.append('<option value ="">all students</option>');
+
+                    $.each(data,function(create,subcatObj){
+                    var option = $('<option/>', {id:create, value:subcatObj});
+                    subcat.append('<option value ="'+subcatObj+'">'+create+'</option>');
+                    });
+
+                }
+            });
+
+
+        });
+});
+</script>
+
+
+
+<script type="text/javascript">
+  $('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+});
+</script>
+              
+
+              <div class="form-group">
+                <label class="control-label">date : </label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                <input placeholder="" class="form-control input-lg" required="required" data-provide="datepicker" data-date-language="ar" name="date" type="text" value=""> 
+                </div>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                              </div>
+
+
+              <div class="form-group">
+                <label class="control-label">note : </label>
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-info-circle"></i></span>
+                <textarea rows="5" class="form-control" name="note" cols="50"></textarea> 
+                </div>
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <div class="help-block with-errors"></div>
+                              </div>
+
+      </div>
+
+ 
+
+            <div class="clear"></div><br>
+            <div class="col-md-12">
+              <input class="btn btn-info btn-block input-lg disabled" type="submit" value="add"> 
+            </div>
+
+
+              </form>
+
+     
+        <div class="clear"></div><br>
+
+<script type="text/javascript">
+      
+
+        $('#myForm').submit(function(event) {
+
+          event.preventDefault();
+
+          $('#resultajax').append('<img src="./images/loader.gif" alt="please wait ..." />');
+
+          $('#myForm input.btn').hide();
+
+          
+           $.ajax({
+            type: 'POST',
+            url: './admin/absences/store',
+            data: $(this).serialize(),
+
+            success: function(data) {
+                              
+                if(data == 'true') {   
+                  $('#resultajax').html("<br><div class='alert alert-success center'><strong>added successfully</strong></div>");
+                  $('#myForm input.btn').show();
+                 }
+
+                if(data == 'false') {
+                  $('#resultajax').html("<br><div class='alert alert-danger center'><strong>Error! please try again </strong></div>");
+                  $('#myForm input.btn').show();
+                }
+                                     
+              }
+
+            });
+                          
+          });
+
+          function refresh() {
+            // to current URL
+            window.location='./admin/absences';
+          }
+
+</script>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="refresh();" class="btn btn-default" data-dismiss="modal">close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  
+
+
+<div class="clear"></div><hr>
+
+
+    <div class="table-responsive">
+      <div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example_length"><label>Show <select name="example_length" aria-controls="example" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="example_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example" class="table table table-striped table-bordered display dataTable no-footer" style="width:100%" role="grid" aria-describedby="example_info">
+        <thead>
+          <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="type: activate to sort column descending" style="width: 123px;">type</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="name: activate to sort column ascending" style="width: 201px;">name</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="date: activate to sort column ascending" style="width: 170px;">date</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="note: activate to sort column ascending" style="width: 638px;">note</th></tr>
+        </thead>
+        <tbody>
+
+
+
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+        
+                  
+ 
+
+        <tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>04/19/2019</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>02/28/2019</td>
+            <td>...</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>12/18/2018</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>12/07/2018</td>
+            <td>malade</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>09/11/2018</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>09/19/2018</td>
+            <td>xfgx</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>09/22/2018</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>09/19/2018</td>
+            <td>اتتتت</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>09/29/2018</td>
+            <td>maladie</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>09/10/2018</td>
+            <td></td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>08/23/2017</td>
+            <td>test</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge orange-bg">student</span>
+
+                        </td>
+
+            <td>Student DEMO</td>
+            <td>07/01/2017</td>
+            <td>note note note note </td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>08/08/2021</td>
+            <td>Mon fils est hospotalise dans le clinique HJRA</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>05/05/2021</td>
+            <td>طرد</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>02/10/2021</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>02/02/2021</td>
+            <td>gndgb</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>12/01/2020</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>12/01/2020</td>
+            <td></td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>09/07/2020</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>08/03/2020</td>
+            <td></td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>07/03/2020</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>04/01/2020</td>
+            <td></td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>01/01/2020</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>09/25/2019</td>
+            <td></td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>09/03/2019</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>08/06/2019</td>
+            <td>llkh</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>04/16/2019</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>07/10/2019</td>
+            <td>Hhhhhh</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>07/03/2019</td>
+            <td>lsq nklsdds</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>06/19/2019</td>
+            <td>azaz</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>05/02/2019</td>
+            <td>Malade</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>10/13/2018</td>
+            <td>محمد احمد براهيم السيد 
+احمد محمود حسنين</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>10/13/2018</td>
+            <td>غياببببببب</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>09/11/2018</td>
+            <td>Test</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>09/19/2018</td>
+            <td>يوجد غياب</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>09/13/2018</td>
+            <td>hlgvhjvhjv</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>09/14/2018</td>
+            <td></td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>09/06/2018</td>
+            <td>3 élèves absents classe 102 avec MR BS R</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>05/15/2018</td>
+            <td>عذر طبي</td>
+
+          </tr><tr class="tr-body even" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>11/30/2017</td>
+            <td>Je suis absent pour maladie</td>
+
+          </tr><tr class="tr-body odd" role="row">
+        
+            <td class="sorting_1">
+            
+            <span class="badge green-bg">teacher</span>
+
+                        </td>
+
+            <td>Teacher DEMO</td>
+            <td>11/02/2017</td>
+            <td>barro est absent</td>
+
+          </tr></tbody>
+      </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 to 41 of 41 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example_previous"><a href="./admin/absences#" aria-controls="example" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="./admin/absences#" aria-controls="example" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="example_next"><a href="./admin/absences#" aria-controls="example" data-dt-idx="2" tabindex="0">Next</a></li></ul></div></div></div></div>
+    </div><!-- /.table-responsive -->
+
+
+
+  </div>
+</div>
+
+
+
+</div>
+
+
+     
+     <script src="./absences_files/bootstrap.min.js"></script>
+
+     <script src="./absences_files/validator.js"></script>
+
+
+
+</body></html>
